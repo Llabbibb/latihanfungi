@@ -3,46 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🍄 Fungi Global Quiz</title>
+    <title>🍄 Fungi Global Adventure</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <style>
-        /* Style sama seperti sebelumnya, saya ringkas agar fokus ke sistem baru */
-        :root { --primary: #6c5ce7; --bg: #dfe6e9; --success: #00b894; }
-        body { font-family: 'Poppins', sans-serif; background: var(--bg); display: flex; justify-content: center; padding: 20px; }
-        .container { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); width: 100%; max-width: 500px; }
-        .option-btn { width: 100%; padding: 15px; margin: 5px 0; border: 2px solid #eee; border-radius: 12px; cursor: pointer; text-align: left; transition: 0.2s; }
-        .option-btn:hover { background: #f9f9ff; border-color: var(--primary); }
-        .correct { background: var(--success) !important; color: white; }
-        .wrong { background: #d63031 !important; color: white; }
+        /* MENGAMBIL STYLE DARI FILE LAMA */
+        :root {
+            --primary: #6c5ce7;
+            --secondary: #a29bfe;
+            --success: #00b894;
+            --danger: #d63031;
+            --bg: #dfe6e9;
+        }
+
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background-color: var(--bg); 
+            display: flex; justify-content: center; padding: 20px;
+            min-height: 100vh; margin: 0;
+        }
+
+        .container { 
+            background: white; padding: 30px; border-radius: 20px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15); 
+            width: 100%; max-width: 500px;
+            overflow: hidden;
+        }
+
+        h1 { color: var(--primary); text-align: center; margin-top: 0; }
+
+        /* Progress Bar */
+        .progress-container { background: #eee; border-radius: 10px; height: 10px; margin-bottom: 20px; }
+        #progress-bar { 
+            background: var(--primary); height: 100%; width: 0%; 
+            border-radius: 10px; transition: width 0.5s ease; 
+        }
+
+        .question { font-size: 1.3em; margin-bottom: 25px; font-weight: 600; color: #2d3436; }
+
+        .options { display: grid; gap: 12px; }
+
+        .option-btn { 
+            padding: 15px; border: 2px solid #eee; border-radius: 12px; 
+            background: white; cursor: pointer; transition: all 0.2s;
+            font-size: 1em; text-align: left;
+        }
+
+        .option-btn:hover { 
+            border-color: var(--secondary); 
+            background-color: #f9f9ff;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(108, 92, 231, 0.1);
+        }
+
+        .correct { background-color: var(--success) !important; color: white; border-color: var(--success); }
+        .wrong { background-color: var(--danger) !important; color: white; border-color: var(--danger); }
+
+        button.main-btn {
+            background: var(--primary); color: white; border: none;
+            padding: 15px; border-radius: 12px; width: 100%;
+            font-weight: bold; cursor: pointer; margin-top: 20px;
+            transition: 0.3s;
+        }
+
+        /* Leaderboard & Stats Card */
+        .stats-card { background: #f8f9fa; padding: 15px; border-radius: 12px; margin-top: 20px; border-left: 5px solid var(--primary); }
+        table { width: 100%; margin-top: 10px; border-collapse: collapse; }
+        th { text-align: left; color: #636e72; font-size: 0.8em; text-transform: uppercase; }
+        td { padding: 8px 0; border-bottom: 1px solid #eee; }
+
+        input#username {
+            width: 100%; padding: 12px; margin-bottom: 10px;
+            border: 2px solid #ddd; border-radius: 8px; box-sizing: border-box;
+        }
+
         .hidden { display: none; }
-        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-        th, td { padding: 10px; border-bottom: 1px solid #eee; text-align: left; }
-        .loader { text-align: center; color: var(--primary); font-style: italic; }
+        .loader { text-align: center; color: var(--primary); font-style: italic; font-size: 0.8em; }
     </style>
 </head>
 <body>
 
 <div class="container animate__animated animate__fadeIn">
     <div id="quiz-ui">
-        <h2 id="question">Memuat soal...</h2>
-        <div id="options"></div>
+        <div class="progress-container"><div id="progress-bar"></div></div>
+        <div id="game-box">
+            <div class="question" id="question">Memuat soal...</div>
+            <div class="options" id="options"></div>
+        </div>
+        <button id="next-btn" class="main-btn animate__animated animate__bounceIn" style="display:none;" onclick="nextQuestion()">Lanjut ➔</button>
     </div>
 
     <div id="result-ui" class="hidden animate__animated animate__zoomIn">
-        <h1>🎉 Kuis Selesai!</h1>
-        <h3>Skor: <span id="final-score">0</span></h3>
-        <input type="text" id="username" placeholder="Nama kamu..." style="width:100%; padding:10px; margin-bottom:10px; border-radius:8px; border:1px solid #ccc;">
-        <button id="save-btn" onclick="uploadScore()" style="width:100%; padding:15px; background:var(--primary); color:white; border:none; border-radius:12px; cursor:pointer;">Kirim ke Leaderboard Global</button>
+        <h1 style="font-size: 3em;">🎉</h1>
+        <h2 style="text-align: center;">Skor Kamu: <span id="final-score">0</span></h2>
+        <input type="text" id="username" placeholder="Siapa namamu?">
+        <button id="save-btn" class="main-btn" style="background: var(--success);" onclick="uploadScore()">Kirim ke Leaderboard Global</button>
+        <button class="main-btn" style="background: #636e72;" onclick="location.reload()">Main Lagi</button>
     </div>
 
-    <hr style="margin: 30px 0;">
-    
-    <h3>🏆 Leaderboard Global (Live)</h3>
-    <div id="loading-lb" class="loader">Menghubungkan ke satelit...</div>
-    <table>
-        <thead><tr><th>Peringkat</th><th>Nama</th><th>Skor</th></tr></thead>
-        <tbody id="lb-body"></tbody>
-    </table>
+    <div class="stats-card">
+        <h3>🏆 Leaderboard Global (Live)</h3>
+        <div id="loading-lb" class="loader">Menghubungkan ke database...</div>
+        <table>
+            <thead><tr><th>Peringkat</th><th>Nama</th><th>Skor</th></tr></thead>
+            <tbody id="lb-body"></tbody>
+        </table>
+    </div>
 </div>
 
 <script type="module">
@@ -50,9 +115,9 @@
   import { getDatabase, ref, set, push, onValue, query, orderByChild, limitToLast } 
   from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-  // --- GANTI DENGAN CONFIG PUNYAMU SENDIRI ---
+  // --- PAKAI CONFIG FIREBASE MILIKMU YANG SUDAH JALAN ---
   const firebaseConfig = {
-    apiKey: "AIzaSyA_8JCXQ9TzLhjQc6fKlymSWfMz7mwf5qU",
+      apiKey: "AIzaSyA_8JCXQ9TzLhjQc6fKlymSWfMz7mwf5qU",
   authDomain: "kuisfungi.firebaseapp.com",
     databaseURL: "https://kuisfungi-default-rtdb.asia-southeast1.firebasedatabase.app/",
   projectId: "kuisfungi",
@@ -65,88 +130,96 @@
   const app = initializeApp(firebaseConfig);
   const db = getDatabase(app);
 
-  // --- LOGIKA KUIS ---
+  // --- DATA SOAL ---
   const questions = [
-      { q: "Hifa yang tidak memiliki sekat disebut?", a: ["Septat", "Senositik", "Miselium"], c: 1 },
-      { q: "Jamur tempe adalah?", a: ["Rhizopus", "Aspergillus", "Penicillium"], c: 0 },
-      { q: "Dinding sel jamur dari?", a: ["Selulosa", "Kitin", "Peptidoglikan"], c: 1 }
+      { q: "Apa nama hifa yang tidak memiliki sekat (sekat melintang)?", a: ["Hifa Septat", "Hifa Senositik", "Miselium", "Haustorium"], c: 1 },
+      { q: "Jamur yang melakukan simbiosis dengan ganggang membentuk lumut kerak adalah...", a: ["Lichenes", "Mikoriza", "Ektomikoriza", "Basidiokarp"], c: 0 },
+      { q: "Saccharomyces cerevisiae sangat penting dalam pembuatan...", a: ["Tempe", "Kecap", "Roti dan Tape", "Oncom"], c: 2 },
+      { q: "Bagian jamur yang berfungsi menyerap nutrisi dari inang pada jamur parasit disebut...", a: ["Spora", "Septa", "Haustorium", "Stolons"], c: 2 },
+      { q: "Fungi dikelompokkan dalam kingdom tersendiri karena tidak memiliki...", a: ["Dinding sel", "Membran inti", "Klorofil", "Spora"], c: 2 }
   ];
 
   let currentIdx = 0;
   let score = 0;
 
-  window.handleAnswer = (idx, btn) => {
-      if(idx === questions[currentIdx].c) {
-          score += 33; // Sesuaikan pembagian skor
-          btn.classList.add('correct');
-      } else {
-          btn.classList.add('wrong');
-      }
-      setTimeout(nextQuestion, 1000);
-  };
-
   function showQuestion() {
-      const q = questions[currentIdx];
-      document.getElementById('question').innerText = q.q;
-      document.getElementById('options').innerHTML = q.a.map((opt, i) => 
+      const data = questions[currentIdx];
+      const gameBox = document.getElementById('game-box');
+      gameBox.className = "animate__animated animate__fadeInRight";
+      
+      document.getElementById('question').innerText = data.q;
+      document.getElementById('options').innerHTML = data.a.map((opt, i) => 
           `<button class="option-btn" onclick="handleAnswer(${i}, this)">${opt}</button>`
       ).join('');
+      
+      document.getElementById('progress-bar').style.width = `${(currentIdx / questions.length) * 100}%`;
+      document.getElementById('next-btn').style.display = "none";
+      setTimeout(() => { gameBox.className = ""; }, 500);
   }
 
-  function nextQuestion() {
+  window.handleAnswer = (idx, btn) => {
+      const correctIdx = questions[currentIdx].c;
+      const allBtns = document.querySelectorAll('.option-btn');
+      allBtns.forEach(b => b.disabled = true);
+
+      if(idx === correctIdx) {
+          btn.classList.add('correct', 'animate__animated', 'animate__pulse');
+          score += Math.round(100 / questions.length);
+      } else {
+          btn.classList.add('wrong', 'animate__animated', 'animate__shakeX');
+          allBtns[correctIdx].classList.add('correct');
+      }
+      document.getElementById('next-btn').style.display = "block";
+  };
+
+  window.nextQuestion = () => {
       currentIdx++;
       if(currentIdx < questions.length) {
           showQuestion();
       } else {
-          document.getElementById('quiz-ui').classList.add('hidden');
-          document.getElementById('result-ui').classList.remove('hidden');
-          document.getElementById('final-score').innerText = score;
+          showResult();
       }
+  };
+
+  function showResult() {
+      document.getElementById('quiz-ui').classList.add('hidden');
+      document.getElementById('result-ui').classList.remove('hidden');
+      document.getElementById('final-score').innerText = score;
+      document.getElementById('progress-bar').style.width = "100%";
   }
 
-  // --- LOGIKA FIREBASE (LEADERBOARD GLOBAL) ---
+  // --- LOGIKA FIREBASE ---
   window.uploadScore = async () => {
-    const nameInput = document.getElementById('username');
-    const name = nameInput.value.trim() || "Anon";
-    const saveBtn = document.getElementById('save-btn');
+      const name = document.getElementById('username').value.trim() || "Anon";
+      const saveBtn = document.getElementById('save-btn');
+      saveBtn.innerText = "Mengirim...";
+      saveBtn.disabled = true;
 
-    // Beri tanda kalau proses sedang berjalan
-    saveBtn.innerText = "Sedang Mengirim...";
-    saveBtn.disabled = true;
+      try {
+          const scoresRef = ref(db, 'leaderboard');
+          await push(scoresRef, {
+              username: name,
+              score: score,
+              timestamp: Date.now()
+          });
+          alert("✅ Skor berhasil dikirim!");
+          saveBtn.innerText = "Tersimpan!";
+      } catch (e) {
+          alert("Gagal: " + e.message);
+          saveBtn.disabled = false;
+          saveBtn.innerText = "Coba Lagi";
+      }
+  };
 
-    try {
-        const scoresRef = ref(db, 'leaderboard');
-        const newScoreRef = push(scoresRef);
-        
-        await set(newScoreRef, {
-            username: name,
-            score: score,
-            timestamp: Date.now()
-        });
-
-        alert("✅ Skor " + score + " berhasil dikirim!");
-        saveBtn.innerText = "Terkirim!";
-    } catch (error) {
-        console.error(error);
-        alert("❌ Gagal kirim! Penyebab: " + error.message);
-        saveBtn.disabled = false;
-        saveBtn.innerText = "Coba Kirim Lagi";
-    }
-};
-
-  // Ambil Data Realtime
+  // Monitor Leaderboard
   const lbRef = query(ref(db, 'leaderboard'), orderByChild('score'), limitToLast(10));
   onValue(lbRef, (snapshot) => {
       const data = snapshot.val();
       const lbBody = document.getElementById('lb-body');
       document.getElementById('loading-lb').classList.add('hidden');
-      
-      let items = [];
-      for (let id in data) items.push(data[id]);
-      
-      // Urutkan dari tertinggi
-      items.sort((a, b) => b.score - a.score);
-      
+      if(!data) return;
+
+      let items = Object.values(data).sort((a, b) => b.score - a.score);
       lbBody.innerHTML = items.map((item, index) => `
           <tr>
               <td>#${index + 1}</td>
@@ -158,9 +231,5 @@
 
   showQuestion();
 </script>
-
 </body>
 </html>
-
-
-
