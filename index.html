@@ -132,11 +132,56 @@
 
   // --- DATA SOAL ---
   const questions = [
-      { q: "Apa nama hifa yang tidak memiliki sekat (sekat melintang)?", a: ["Hifa Septat", "Hifa Senositik", "Miselium", "Haustorium"], c: 1 },
-      { q: "Jamur yang melakukan simbiosis dengan ganggang membentuk lumut kerak adalah...", a: ["Lichenes", "Mikoriza", "Ektomikoriza", "Basidiokarp"], c: 0 },
-      { q: "Saccharomyces cerevisiae sangat penting dalam pembuatan...", a: ["Tempe", "Kecap", "Roti dan Tape", "Oncom"], c: 2 },
-      { q: "Bagian jamur yang berfungsi menyerap nutrisi dari inang pada jamur parasit disebut...", a: ["Spora", "Septa", "Haustorium", "Stolons"], c: 2 },
-      { q: "Fungi dikelompokkan dalam kingdom tersendiri karena tidak memiliki...", a: ["Dinding sel", "Membran inti", "Klorofil", "Spora"], c: 2 }
+    { q: "Pada tahun 1828, Pemerintah Hindia Belanda mendirikan lembaga yang menjadi cikal bakal Bank Indonesia, yaitu...", a: ["Nanpo Kaihatsu Ginko", "De Javasche Bank", "Bank Negara Indonesia", "Otoritas Jasa Keuangan"], c: 1 },
+    { q: "Apa tujuan tunggal Bank Indonesia berdasarkan UU No. 23 Tahun 1999?", a: ["Memberikan kredit kepada masyarakat umum", "Mencapai dan memelihara kestabilan nilai rupiah", "Mendanai perdagangan rempah-rempah", "Mengawasi kesehatan individu bank"], c: 1 },
+    { q: "Proses nasionalisasi De Javasche Bank menjadi Bank Indonesia terjadi pada tanggal...", a: ["17 Agustus 1945", "1 Juli 1953", "17 November 2000", "17 Agustus 2019"], c: 1 },
+    { q: "Bank Indonesia memiliki peran sebagai 'Regulator'. Contoh penerapan peran ini adalah...", a: ["Menjalankan sistem BI-RTGS dan SKNBI", "Memberikan izin dompet digital", "Menetapkan Peraturan Bank Indonesia (PBI)", "Memantau aktivitas pelaku sistem pembayaran"], c: 2 },
+    { q: "Dalam sistem BI-RTGS, penyelesaian dilakukan secara 'Gross Settlement'. Ini berarti...", a: ["Transaksi diproses satu per satu secara seketika", "Transaksi dikumpulkan dulu baru diproses", "Hanya transaksi kecil yang diproses", "Transaksi diproses setiap akhir bulan"], c: 0 },
+    { q: "Apa yang dimaksud dengan uang kartal?", a: ["Uang elektronik", "Uang kertas dan uang logam", "Cek dan bilyet giro", "Saldo di dalam ATM"], c: 1 },
+    { q: "Unsur pengaman uang rupiah yang bisa dilihat dengan cara diterawang adalah...", a: ["Tinta berubah warna", "Gambar saling isi (rectoverso)", "Tulisan mikro", "Benang pengaman"], c: 1 },
+    { q: "Lembaga yang memiliki wewenang eksklusif untuk mengeluarkan uang rupiah adalah...", a: ["Kementerian Keuangan", "OJK", "Bank Indonesia", "Perum Peruri"], c: 2 },
+    { q: "QRIS adalah standarisasi pembayaran menggunakan metode...", a: ["Transfer manual", "Scan kode QR", "Gesek kartu", "Setor tunai"], c: 1 },
+    { q: "Tugas BI dalam menjaga kelancaran sistem pembayaran dilakukan untuk...", a: ["Mencetak uang sebanyak-banyaknya", "Mendukung kestabilan moneter", "Menghapus utang negara", "Memberikan pinjaman bunga nol persen"], c: 1 },
+    { q: "Pihak yang mengawasi perbankan secara mikro (individu bank) saat ini adalah...", a: ["Bank Indonesia", "OJK", "Kementerian Keuangan", "LPS"], c: 1 },
+    { q: "BI-FAST adalah sistem pembayaran yang memungkinkan transfer antar bank dengan biaya...", a: ["Rp 6.500", "Rp 2.500", "Gratis", "Rp 10.000"], c: 1 },
+    { q: "Uang yang nilainya tetap sama meskipun bahan pembuatnya berubah disebut...", a: ["Uang Komoditas", "Uang Fiat", "Uang Logam", "Uang Internasional"], c: 1 },
+    { q: "Warna dominan pada uang kertas pecahan Rp 50.000 tahun emisi 2022 adalah...", a: ["Merah", "Hijau", "Biru", "Ungu"], c: 2 },
+    { q: "Sistem pembayaran yang memproses transaksi ritel bernilai kecil disebut...", a: ["BI-RTGS", "SKNBI", "Bursa Efek", "Money Market"], c: 1 },
+    { q: "Siapa tokoh yang gambarnya terdapat pada uang kertas Rp 100.000?", a: ["Ir. Soekarno & Moh. Hatta", "Djuanda Kartawidjaja", "I Gusti Ngurah Rai", "Frans Kaisiepo"], c: 0 },
+    { q: "Apa fungsi dari benang pengaman pada uang kertas?", a: ["Sebagai hiasan", "Memudahkan melipat uang", "Mencegah pemalsuan uang", "Agar uang tidak basah"], c: 2 },
+    { q: "Bank Indonesia dipimpin oleh seorang...", a: ["Direktur Utama", "Ketua Dewan Komisioner", "Gubernur BI", "Menteri Keuangan"], c: 2 },
+    { q: "Kepanjangan dari RTGS adalah...", a: ["Real Time Gross Settlement", "Ready To Go System", "Regional Trade Gross System", "Real Time Gold Settlement"], c: 0 },
+    { q: "Contoh uang giral adalah...", a: ["Koin Rp 500", "Uang Rp 2.000", "Cek dan Bilyet Giro", "E-Money"], c: 2 },
+    { q: "Masa di mana bank-bank di Indonesia digabung menjadi satu 'Bank Tunggal' terjadi pada...", a: ["Masa Hindia Belanda", "Masa Pendudukan Jepang", "Masa Orde Baru", "Masa Reformasi"], c: 1 },
+    { q: "UU yang memberikan independensi penuh kepada BI adalah...", a: ["UU No. 13 Tahun 1968", "UU No. 23 Tahun 1999", "UUD 1945", "UU Perbankan 1992"], c: 1 },
+    { q: "BI membantu pemerintah dalam mengelola utang negara. Ini disebut peran...", a: ["Lender of the last resort", "Financial Advisor", "Regulator", "Operator"], c: 1 },
+    { q: "Apa yang dilakukan BI jika inflasi terlalu tinggi?", a: ["Menurunkan suku bunga", "Menaikkan suku bunga", "Mencetak uang lebih banyak", "Memberi bantuan tunai"], c: 1 },
+    { q: "Uang elektronik berbasis aplikasi (server-based) contohnya adalah...", a: ["E-Toll", "Flazz", "GoPay/OVO", "Brizzi"], c: 2 },
+    { q: "Sifat utama uang sebagai alat tukar adalah...", a: ["Sulit dibawa", "Diterima secara umum", "Nilainya berubah-ubah", "Mudah hancur"], c: 1 },
+    { q: "Berapa pilar utama tugas Bank Indonesia?", a: ["1", "2", "3", "4"], c: 2 },
+    { q: "Peran BI sebagai 'Operator' berarti BI...", a: ["Membuat aturan saja", "Menjalankan langsung infrastruktur pembayaran", "Mengawasi bank-bank komersial", "Menarik uang dari peredaran"], c: 1 },
+    { q: "Salah satu ciri uang rupiah asli adalah memiliki 'Tactile Council' yaitu...", a: ["Tanda air", "Tulisan yang terasa kasar/timbul", "Warna yang mengkilap", "Nomor seri urut"], c: 1 },
+    { q: "Tempat menyimpan emas cadangan negara oleh BI disebut...", a: ["Gudang Uang", "Cadangan Devisa", "Kas Negara", "Brankas Pemerintah"], c: 1 },
+    { q: "Nasionalisasi De Javasche Bank dilakukan dengan membeli saham sebesar...", a: ["50%", "75%", "97%", "100%"], c: 2 },
+    { q: "Mengapa BI disebut 'Lender of the Last Resort'?", a: ["Karena BI bank paling kaya", "Karena BI memberikan pinjaman terakhir ke bank yang krisis", "Karena BI tempat rakyat meminjam uang", "Karena BI pemberi modal usaha mikro"], c: 1 },
+    { q: "Mata uang resmi Indonesia sebelum Rupiah secara resmi beredar luas adalah...", a: ["Gulden", "ORI (Oeang Republik Indonesia)", "Yen Jepang", "Dollar Indonesia"], c: 1 },
+    { q: "Pencetakan uang Rupiah dilakukan oleh BI bekerja sama dengan...", a: ["PT Telkom", "PT KAI", "Perum Peruri", "PT Pos Indonesia"], c: 2 },
+    { q: "Prinsip sistem pembayaran 'Efisien' berarti...", a: ["Sangat mahal harganya", "Dapat digunakan secara luas dengan biaya rendah", "Hanya untuk kalangan tertentu", "Membutuhkan waktu lama"], c: 1 },
+    { q: "Apa yang dimaksud dengan inflasi?", a: ["Kenaikan harga barang secara umum dan terus-menerus", "Penurunan jumlah uang beredar", "Kenaikan nilai mata uang", "Kenaikan gaji pegawai"], c: 0 },
+    { q: "Semboyan yang digunakan untuk merawat uang rupiah adalah...", a: ["Cinta, Bangga, Paham Rupiah", "Bersih dan Rapi", "Simpan dan Hemat", "Rupiah Nomorsatu"], c: 0 },
+    { q: "BI-RTGS biasanya digunakan untuk transaksi bernilai...", a: ["Di bawah Rp 100.000", "Kecil (Ritel)", "Besar (High Value)", "Hanya antar keluarga"], c: 2 },
+    { q: "Digitalisasi sistem pembayaran bertujuan untuk...", a: ["Menghilangkan uang tunai sama sekali", "Meningkatkan inklusi keuangan", "Memudahkan pemalsuan", "Meningkatkan biaya admin"], c: 1 },
+    { q: "Pahlawan nasional Cut Meutia terdapat pada pecahan uang...", a: ["Rp 1.000", "Rp 2.000", "Rp 5.000", "Rp 10.000"], c: 0 },
+    { q: "Salah satu tantangan sistem pembayaran di era digital adalah...", a: ["Terlalu banyak uang logam", "Serangan siber (cyber security)", "Harga kertas uang mahal", "Masyarakat rajin menabung"], c: 1 },
+    { q: "Nilai tukar rupiah terhadap mata uang asing disebut...", a: ["Inflasi", "Deflasi", "Kurs", "Suku Bunga"], c: 2 },
+    { q: "Apa kepanjangan dari QRIS?", a: ["Quick Response Code Indonesian Standard", "Quick Read Indonesian System", "Quality Rate International Standard", "Quick Response Interactive System"], c: 0 },
+    { q: "Mata uang digital yang sedang dikembangkan Bank Indonesia disebut...", a: ["Bitcoin", "Digital Rupiah (CBDC)", "Ethereum", "E-Money"], c: 1 },
+    { q: "Kegiatan memusnahkan uang rupiah dilakukan BI jika...", a: ["Uang masih baru", "Uang sudah lusuh atau tidak layak edar", "Masyarakat terlalu kaya", "Uang bergambar pahlawan luar negeri"], c: 1 },
+    { q: "Apa yang dimaksud dengan 'E-Money (Chip-based)'?", a: ["Saldo di smartphone", "Uang elektronik dalam chip di kartu fisik", "Uang kertas berstempel chip", "Sistem barter emas"], c: 1 },
+    { q: "Mengapa BI disebut 'Agen Pembangunan' pada masa Orde Baru?", a: ["Karena BI membangun sekolah", "Karena peran BI diselaraskan dengan program pemerintah", "Karena BI bank tunggal", "Karena BI bebas perintah presiden"], c: 1 },
+    { q: "Dalam SKNBI, transaksi diproses secara 'Batch'. Artinya...", a: ["Langsung sampai saat itu juga", "Dikumpulkan dulu lalu diproses bersamaan", "Hanya satu transaksi sehari", "Harus setor tunai fisik"], c: 1 },
+    { q: "Dampak positif inklusi finansial digital adalah...", a: ["Masyarakat malas menabung", "Masyarakat unbanked bisa bertransaksi digital", "Biaya hidup jadi mahal", "Internet dilarang"], c: 1 },
+    { q: "Visi BI dalam menghubungkan semua aplikasi pembayaran disebut...", a: ["Blueprint Sistem Pembayaran Indonesia (BSPI)", "Rencana Jangka Menengah", "Program Go Digital", "Satu Data Indonesia"], c: 0 }
   ];
 
   let currentIdx = 0;
@@ -233,4 +278,5 @@
 </script>
 </body>
 </html>
+
 
