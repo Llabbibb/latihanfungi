@@ -104,19 +104,34 @@
   }
 
   // --- LOGIKA FIREBASE (LEADERBOARD GLOBAL) ---
-  window.uploadScore = () => {
-      const name = document.getElementById('username').value || "Anon";
-      const scoresRef = ref(db, 'leaderboard');
-      const newScoreRef = push(scoresRef);
-      set(newScoreRef, {
-          username: name,
-          score: score,
-          timestamp: Date.now()
-      }).then(() => {
-          alert("Skor terkirim!");
-          document.getElementById('save-btn').disabled = true;
-      });
-  };
+  window.uploadScore = async () => {
+    const nameInput = document.getElementById('username');
+    const name = nameInput.value.trim() || "Anon";
+    const saveBtn = document.getElementById('save-btn');
+
+    // Beri tanda kalau proses sedang berjalan
+    saveBtn.innerText = "Sedang Mengirim...";
+    saveBtn.disabled = true;
+
+    try {
+        const scoresRef = ref(db, 'leaderboard');
+        const newScoreRef = push(scoresRef);
+        
+        await set(newScoreRef, {
+            username: name,
+            score: score,
+            timestamp: Date.now()
+        });
+
+        alert("✅ Skor " + score + " berhasil dikirim!");
+        saveBtn.innerText = "Terkirim!";
+    } catch (error) {
+        console.error(error);
+        alert("❌ Gagal kirim! Penyebab: " + error.message);
+        saveBtn.disabled = false;
+        saveBtn.innerText = "Coba Kirim Lagi";
+    }
+};
 
   // Ambil Data Realtime
   const lbRef = query(ref(db, 'leaderboard'), orderByChild('score'), limitToLast(10));
@@ -145,3 +160,4 @@
 
 </body>
 </html>
+
