@@ -132,58 +132,257 @@
 
   // --- DATA SOAL ---
   const questions = [
-    { q: "Pada tahun 1828, Pemerintah Hindia Belanda mendirikan lembaga yang menjadi cikal bakal Bank Indonesia, yaitu...", a: ["Nanpo Kaihatsu Ginko", "De Javasche Bank", "Bank Negara Indonesia", "Otoritas Jasa Keuangan"], c: 1 },
-    { q: "Apa tujuan tunggal Bank Indonesia berdasarkan UU No. 23 Tahun 1999?", a: ["Memberikan kredit kepada masyarakat umum", "Mencapai dan memelihara kestabilan nilai rupiah", "Mendanai perdagangan rempah-rempah", "Mengawasi kesehatan individu bank"], c: 1 },
-    { q: "Proses nasionalisasi De Javasche Bank menjadi Bank Indonesia terjadi pada tanggal...", a: ["17 Agustus 1945", "1 Juli 1953", "17 November 2000", "17 Agustus 2019"], c: 1 },
-    { q: "Bank Indonesia memiliki peran sebagai 'Regulator'. Contoh penerapan peran ini adalah...", a: ["Menjalankan sistem BI-RTGS dan SKNBI", "Memberikan izin dompet digital", "Menetapkan Peraturan Bank Indonesia (PBI)", "Memantau aktivitas pelaku sistem pembayaran"], c: 2 },
-    { q: "Dalam sistem BI-RTGS, penyelesaian dilakukan secara 'Gross Settlement'. Ini berarti...", a: ["Transaksi diproses satu per satu secara seketika", "Transaksi dikumpulkan dulu baru diproses", "Hanya transaksi kecil yang diproses", "Transaksi diproses setiap akhir bulan"], c: 0 },
-    { q: "Apa yang dimaksud dengan uang kartal?", a: ["Uang elektronik", "Uang kertas dan uang logam", "Cek dan bilyet giro", "Saldo di dalam ATM"], c: 1 },
-    { q: "Unsur pengaman uang rupiah yang bisa dilihat dengan cara diterawang adalah...", a: ["Tinta berubah warna", "Gambar saling isi (rectoverso)", "Tulisan mikro", "Benang pengaman"], c: 1 },
-    { q: "Lembaga yang memiliki wewenang eksklusif untuk mengeluarkan uang rupiah adalah...", a: ["Kementerian Keuangan", "OJK", "Bank Indonesia", "Perum Peruri"], c: 2 },
-    { q: "QRIS adalah standarisasi pembayaran menggunakan metode...", a: ["Transfer manual", "Scan kode QR", "Gesek kartu", "Setor tunai"], c: 1 },
-    { q: "Tugas BI dalam menjaga kelancaran sistem pembayaran dilakukan untuk...", a: ["Mencetak uang sebanyak-banyaknya", "Mendukung kestabilan moneter", "Menghapus utang negara", "Memberikan pinjaman bunga nol persen"], c: 1 },
-    { q: "Pihak yang mengawasi perbankan secara mikro (individu bank) saat ini adalah...", a: ["Bank Indonesia", "OJK", "Kementerian Keuangan", "LPS"], c: 1 },
-    { q: "BI-FAST adalah sistem pembayaran yang memungkinkan transfer antar bank dengan biaya...", a: ["Rp 6.500", "Rp 2.500", "Gratis", "Rp 10.000"], c: 1 },
-    { q: "Uang yang nilainya tetap sama meskipun bahan pembuatnya berubah disebut...", a: ["Uang Komoditas", "Uang Fiat", "Uang Logam", "Uang Internasional"], c: 1 },
-    { q: "Warna dominan pada uang kertas pecahan Rp 50.000 tahun emisi 2022 adalah...", a: ["Merah", "Hijau", "Biru", "Ungu"], c: 2 },
-    { q: "Sistem pembayaran yang memproses transaksi ritel bernilai kecil disebut...", a: ["BI-RTGS", "SKNBI", "Bursa Efek", "Money Market"], c: 1 },
-    { q: "Siapa tokoh yang gambarnya terdapat pada uang kertas Rp 100.000?", a: ["Ir. Soekarno & Moh. Hatta", "Djuanda Kartawidjaja", "I Gusti Ngurah Rai", "Frans Kaisiepo"], c: 0 },
-    { q: "Apa fungsi dari benang pengaman pada uang kertas?", a: ["Sebagai hiasan", "Memudahkan melipat uang", "Mencegah pemalsuan uang", "Agar uang tidak basah"], c: 2 },
-    { q: "Bank Indonesia dipimpin oleh seorang...", a: ["Direktur Utama", "Ketua Dewan Komisioner", "Gubernur BI", "Menteri Keuangan"], c: 2 },
-    { q: "Kepanjangan dari RTGS adalah...", a: ["Real Time Gross Settlement", "Ready To Go System", "Regional Trade Gross System", "Real Time Gold Settlement"], c: 0 },
-    { q: "Contoh uang giral adalah...", a: ["Koin Rp 500", "Uang Rp 2.000", "Cek dan Bilyet Giro", "E-Money"], c: 2 },
-    { q: "Masa di mana bank-bank di Indonesia digabung menjadi satu 'Bank Tunggal' terjadi pada...", a: ["Masa Hindia Belanda", "Masa Pendudukan Jepang", "Masa Orde Baru", "Masa Reformasi"], c: 1 },
-    { q: "UU yang memberikan independensi penuh kepada BI adalah...", a: ["UU No. 13 Tahun 1968", "UU No. 23 Tahun 1999", "UUD 1945", "UU Perbankan 1992"], c: 1 },
-    { q: "BI membantu pemerintah dalam mengelola utang negara. Ini disebut peran...", a: ["Lender of the last resort", "Financial Advisor", "Regulator", "Operator"], c: 1 },
-    { q: "Apa yang dilakukan BI jika inflasi terlalu tinggi?", a: ["Menurunkan suku bunga", "Menaikkan suku bunga", "Mencetak uang lebih banyak", "Memberi bantuan tunai"], c: 1 },
-    { q: "Uang elektronik berbasis aplikasi (server-based) contohnya adalah...", a: ["E-Toll", "Flazz", "GoPay/OVO", "Brizzi"], c: 2 },
-    { q: "Sifat utama uang sebagai alat tukar adalah...", a: ["Sulit dibawa", "Diterima secara umum", "Nilainya berubah-ubah", "Mudah hancur"], c: 1 },
-    { q: "Berapa pilar utama tugas Bank Indonesia?", a: ["1", "2", "3", "4"], c: 2 },
-    { q: "Peran BI sebagai 'Operator' berarti BI...", a: ["Membuat aturan saja", "Menjalankan langsung infrastruktur pembayaran", "Mengawasi bank-bank komersial", "Menarik uang dari peredaran"], c: 1 },
-    { q: "Salah satu ciri uang rupiah asli adalah memiliki 'Tactile Council' yaitu...", a: ["Tanda air", "Tulisan yang terasa kasar/timbul", "Warna yang mengkilap", "Nomor seri urut"], c: 1 },
-    { q: "Tempat menyimpan emas cadangan negara oleh BI disebut...", a: ["Gudang Uang", "Cadangan Devisa", "Kas Negara", "Brankas Pemerintah"], c: 1 },
-    { q: "Nasionalisasi De Javasche Bank dilakukan dengan membeli saham sebesar...", a: ["50%", "75%", "97%", "100%"], c: 2 },
-    { q: "Mengapa BI disebut 'Lender of the Last Resort'?", a: ["Karena BI bank paling kaya", "Karena BI memberikan pinjaman terakhir ke bank yang krisis", "Karena BI tempat rakyat meminjam uang", "Karena BI pemberi modal usaha mikro"], c: 1 },
-    { q: "Mata uang resmi Indonesia sebelum Rupiah secara resmi beredar luas adalah...", a: ["Gulden", "ORI (Oeang Republik Indonesia)", "Yen Jepang", "Dollar Indonesia"], c: 1 },
-    { q: "Pencetakan uang Rupiah dilakukan oleh BI bekerja sama dengan...", a: ["PT Telkom", "PT KAI", "Perum Peruri", "PT Pos Indonesia"], c: 2 },
-    { q: "Prinsip sistem pembayaran 'Efisien' berarti...", a: ["Sangat mahal harganya", "Dapat digunakan secara luas dengan biaya rendah", "Hanya untuk kalangan tertentu", "Membutuhkan waktu lama"], c: 1 },
-    { q: "Apa yang dimaksud dengan inflasi?", a: ["Kenaikan harga barang secara umum dan terus-menerus", "Penurunan jumlah uang beredar", "Kenaikan nilai mata uang", "Kenaikan gaji pegawai"], c: 0 },
-    { q: "Semboyan yang digunakan untuk merawat uang rupiah adalah...", a: ["Cinta, Bangga, Paham Rupiah", "Bersih dan Rapi", "Simpan dan Hemat", "Rupiah Nomorsatu"], c: 0 },
-    { q: "BI-RTGS biasanya digunakan untuk transaksi bernilai...", a: ["Di bawah Rp 100.000", "Kecil (Ritel)", "Besar (High Value)", "Hanya antar keluarga"], c: 2 },
-    { q: "Digitalisasi sistem pembayaran bertujuan untuk...", a: ["Menghilangkan uang tunai sama sekali", "Meningkatkan inklusi keuangan", "Memudahkan pemalsuan", "Meningkatkan biaya admin"], c: 1 },
-    { q: "Pahlawan nasional Cut Meutia terdapat pada pecahan uang...", a: ["Rp 1.000", "Rp 2.000", "Rp 5.000", "Rp 10.000"], c: 0 },
-    { q: "Salah satu tantangan sistem pembayaran di era digital adalah...", a: ["Terlalu banyak uang logam", "Serangan siber (cyber security)", "Harga kertas uang mahal", "Masyarakat rajin menabung"], c: 1 },
-    { q: "Nilai tukar rupiah terhadap mata uang asing disebut...", a: ["Inflasi", "Deflasi", "Kurs", "Suku Bunga"], c: 2 },
-    { q: "Apa kepanjangan dari QRIS?", a: ["Quick Response Code Indonesian Standard", "Quick Read Indonesian System", "Quality Rate International Standard", "Quick Response Interactive System"], c: 0 },
-    { q: "Mata uang digital yang sedang dikembangkan Bank Indonesia disebut...", a: ["Bitcoin", "Digital Rupiah (CBDC)", "Ethereum", "E-Money"], c: 1 },
-    { q: "Kegiatan memusnahkan uang rupiah dilakukan BI jika...", a: ["Uang masih baru", "Uang sudah lusuh atau tidak layak edar", "Masyarakat terlalu kaya", "Uang bergambar pahlawan luar negeri"], c: 1 },
-    { q: "Apa yang dimaksud dengan 'E-Money (Chip-based)'?", a: ["Saldo di smartphone", "Uang elektronik dalam chip di kartu fisik", "Uang kertas berstempel chip", "Sistem barter emas"], c: 1 },
-    { q: "Mengapa BI disebut 'Agen Pembangunan' pada masa Orde Baru?", a: ["Karena BI membangun sekolah", "Karena peran BI diselaraskan dengan program pemerintah", "Karena BI bank tunggal", "Karena BI bebas perintah presiden"], c: 1 },
-    { q: "Dalam SKNBI, transaksi diproses secara 'Batch'. Artinya...", a: ["Langsung sampai saat itu juga", "Dikumpulkan dulu lalu diproses bersamaan", "Hanya satu transaksi sehari", "Harus setor tunai fisik"], c: 1 },
-    { q: "Dampak positif inklusi finansial digital adalah...", a: ["Masyarakat malas menabung", "Masyarakat unbanked bisa bertransaksi digital", "Biaya hidup jadi mahal", "Internet dilarang"], c: 1 },
-    { q: "Visi BI dalam menghubungkan semua aplikasi pembayaran disebut...", a: ["Blueprint Sistem Pembayaran Indonesia (BSPI)", "Rencana Jangka Menengah", "Program Go Digital", "Satu Data Indonesia"], c: 0 }
-  ];
-
+  {
+    q: "Surah apa dan ayat berapa yang secara tegas berisi larangan untuk mendekati perbuatan zina?",
+    a: ["Q.S. Al-Baqarah ayat 2", "Q.S. Al-Isra' ayat 32", "Q.S. An-Nur ayat 2", "Q.S. Al-Ma'idah ayat 3"],
+    c: 1
+  },
+  {
+    q: "Dalam Q.S. Al-Isra' ayat 32, zina disebut sebagai perbuatan 'faahisyah'. Apa arti kata tersebut?",
+    a: ["Perbuatan yang merugikan", "Perbuatan yang keji", "Perbuatan dosa kecil", "Jalan yang buruk"],
+    c: 1
+  },
+  {
+    q: "Mengapa Allah melarang umat Islam untuk 'mendekati' zina, bukan sekadar melarang 'melakukan' zina?",
+    a: ["Karena hukuman mendekati zina lebih berat", "Sebagai langkah pencegahan (Sadd adz-Dzari'ah) agar tidak terjerumus", "Karena mendekati zina sudah pasti menghasilkan anak", "Agar umat Islam bisa bergaul bebas asal tidak berzina"],
+    c: 1
+  },
+  {
+    q: "Potongan ayat 'وَلَا تَقْرَبُوا الزِّنَا' mengandung hukum bacaan Alif Lam Syamsiyah pada kata...",
+    a: ["Walaa", "Taqrabuu", "Az-zinaa", "Tidak ada"],
+    c: 2
+  },
+  {
+    q: "Hukuman bagi pezina perempuan dan laki-laki yang belum menikah (Ghairu Muhsan) berdasarkan Q.S. An-Nur ayat 2 adalah...",
+    a: ["Dirajam sampai mati", "Dicambuk 100 kali", "Dipenjara seumur hidup", "Denda berupa uang"],
+    c: 1
+  },
+  {
+    q: "Perbuatan zina yang dilakukan oleh orang yang sudah baligh, berakal, dan sudah atau pernah menikah disebut...",
+    a: ["Zina Ghairu Muhsan", "Zina Muhsan", "Zina Hati", "Qazhaf"],
+    c: 1
+  },
+  {
+    q: "Apa hukuman bagi pelaku Zina Muhsan menurut hukum syariat Islam?",
+    a: ["Dicambuk 80 kali", "Dicambuk 100 kali", "Hukuman rajam (dilempari batu hingga meninggal)", "Diasingkan selama satu tahun"],
+    c: 2
+  },
+  {
+    q: "Menurut Q.S. An-Nur ayat 2, siapa yang diperintahkan untuk menyaksikan pelaksanaan hukuman cambuk bagi pezina?",
+    a: ["Hanya keluarga pelaku", "Hanya aparat penegak hukum", "Sekelompok orang dari golongan mukminin", "Tidak ada yang boleh melihat"],
+    c: 2
+  },
+  {
+    q: "Kata 'الْمُؤْمِنِينَ' (Al-Mu'miniin) pada akhir Q.S. An-Nur ayat 2 mengandung hukum bacaan...",
+    a: ["Alif Lam Syamsiyah", "Alif Lam Qamariyah", "Idgham Bighunnah", "Ikhfa Hakiki"],
+    c: 1
+  },
+  {
+    q: "Menurut hukum fikih, agar seseorang dapat dijatuhi hukuman hudud zina secara sah, berapa jumlah saksi laki-laki yang harus melihat perbuatan tersebut secara langsung?",
+    a: ["1 orang", "2 orang", "4 orang", "6 orang"],
+    c: 2
+  },
+  {
+    q: "Apabila seseorang menuduh orang lain berzina tetapi tidak mampu mendatangkan saksi yang cukup, maka penuduh akan dikenakan hukuman...",
+    a: ["Rajam", "Qazhaf (cambuk 80 kali)", "Denda", "Pengasingan"],
+    c: 1
+  },
+  {
+    q: "Dampak perbuatan zina sangat merusak tatanan sosial, salah satu yang paling krusial adalah merusak nasab. Apa yang dimaksud dengan nasab?",
+    a: ["Kekayaan keluarga", "Garis keturunan", "Kesehatan fisik", "Pendidikan anak"],
+    c: 1
+  },
+  {
+    q: "Istilah berduaan antara laki-laki dan perempuan yang bukan mahram di tempat sepi sehingga memicu fitnah dan syahwat disebut...",
+    a: ["Ikhtilat", "Khalwat", "Ghibah", "Tabarruj"],
+    c: 1
+  },
+  {
+    q: "Salah satu cara untuk menghindari zina adalah dengan 'Ghadhul Bashar', yang artinya...",
+    a: ["Menutup aurat", "Menundukkan/menjaga pandangan", "Menjaga lisan", "Menahan amarah"],
+    c: 1
+  },
+  {
+    q: "Perilaku mempertontonkan perhiasan, kecantikan, dan aurat kepada laki-laki yang bukan mahramnya secara berlebihan disebut...",
+    a: ["Tawadhu", "Tabarruj", "Qana'ah", "Tasamuh"],
+    c: 1
+  },
+  {
+    q: "Dalam hukum KUHP di Indonesia (Pasal 284), tindak pidana perzinaan dapat diancam dengan hukuman penjara paling lama...",
+    a: ["3 bulan", "9 bulan", "5 tahun", "Seumur hidup"],
+    c: 1
+  },
+  {
+    q: "Penyakit menular seksual yang paling berbahaya dan belum ada obat penyembuhnya secara total akibat pergaulan bebas adalah...",
+    a: ["Influenza", "HIV/AIDS", "Tifus", "Demam Berdarah"],
+    c: 1
+  },
+  {
+    q: "Sebuah hadis menyebutkan bahwa apabila ada laki-laki dan perempuan berduaan (khalwat), maka yang ketiga di antara mereka adalah...",
+    a: ["Malaikat", "Setan", "Teman", "Hati nurani"],
+    c: 1
+  },
+  {
+    q: "Apa arti 'Wa saa'a sabiilaa' di akhir ayat 32 surah Al-Isra'?",
+    a: ["Dan itu adalah dosa besar", "Dan itu seburuk-buruk jalan", "Dan Allah Maha Melihat", "Maka jauhilah olehmu"],
+    c: 1
+  },
+  {
+    q: "Berdasarkan Q.S. An-Nur ayat 2, perasaan apa yang tidak boleh menghalangi penegakan hukum bagi pezina?",
+    a: ["Amarah", "Belas kasihan (Iba)", "Takut", "Dendam"],
+    c: 1
+  },
+  {
+    q: "Kata 'الزَّانِيَةُ' (Az-zaaniyatu) diawali dengan Alif Lam yang bertemu huruf Zai. Bagaimana cara membacanya?",
+    a: ["Al-zaaniyatu", "Az-zaaniyatu", "A-zaaniyatu", "Ar-zaaniyatu"],
+    c: 1
+  },
+  {
+    q: "Hukuman pengasingan bagi pezina ghairu muhsan menurut sebagian ulama dilakukan selama...",
+    a: ["Satu bulan", "Satu tahun", "Seumur hidup", "Lima tahun"],
+    c: 1
+  },
+  {
+    q: "Menurut Imam Malik dan Syafi'i, berapa kali seseorang harus mengaku berzina agar bisa dijatuhi hukuman (jika tidak ada saksi)?",
+    a: ["1 kali", "2 kali", "3 kali", "4 kali"],
+    c: 0
+  },
+  {
+    q: "Apa syarat saksi dalam kasus perzinaan agar kesaksiannya diterima syariat?",
+    a: ["Boleh laki-laki atau perempuan", "Laki-laki, muslim, baligh, berakal, adil, melihat langsung", "Mendengar cerita dari orang lain", "Anak kecil yang jujur"],
+    c: 1
+  },
+  {
+    q: "Jika para saksi tidak genap berjumlah 4 orang, apa yang terjadi pada saksi yang sudah melapor?",
+    a: ["Kesaksiannya disimpan", "Mereka justru dihukum cambuk 80 kali (Qazhaf)", "Pelaku tetap dihukum", "Diberi hadiah"],
+    c: 1
+  },
+  {
+    q: "Zina yang dilakukan dengan mata adalah...",
+    a: ["Menyentuh", "Melihat hal-hal yang diharamkan", "Mendengarkan gosip", "Berkata kotor"],
+    c: 1
+  },
+  {
+    q: "Selain menjaga pandangan, cara lain yang diwajibkan agama untuk mencegah pergaulan bebas bagi muslimah adalah...",
+    a: ["Menutup diri di kamar selamanya", "Menutup aurat dengan jilbab yang syar'i", "Memakai pakaian mahal", "Tidak berbicara sama sekali"],
+    c: 1
+  },
+  {
+    q: "Secara bahasa (etimologi), zina berarti...",
+    a: ["Kebaikan", "Hubungan terlarang", "Perpisahan", "Pernikahan"],
+    c: 1
+  },
+  {
+    q: "Dalam ayat 'وَلَا تَقْرَبُوا الزِّنَا', terdapat mad thabi'i pada huruf 'Laa' karena...",
+    a: ["Fathah bertemu wau", "Fathah bertemu alif", "Kasrah bertemu ya", "Dhammah bertemu wau"],
+    c: 1
+  },
+  {
+    q: "Kata 'تَقْرَبُوا' (Taqrabuu) mengandung mad thabi'i karena...",
+    a: ["Fathah bertemu alif", "Dhammah bertemu wau sukun", "Kasrah bertemu ya sukun", "Fathah bertemu ya"],
+    c: 1
+  },
+  {
+    q: "Berapa panjang harakat untuk bacaan Mad Thabi'i?",
+    a: ["1 harakat", "2 harakat", "4 harakat", "6 harakat"],
+    c: 1
+  },
+  {
+    q: "Perbuatan zina dapat menghilangkan cahaya keimanan dari hati pelakunya. Hal ini merupakan dampak zina di bidang...",
+    a: ["Kesehatan", "Spiritual (Agama)", "Ekonomi", "Sosial"],
+    c: 1
+  },
+  {
+    q: "Menghindari pergaulan bebas mencerminkan upaya melindungi 'Harkat dan Martabat Manusia'. Martabat artinya...",
+    a: ["Kekayaan", "Harga diri dan kehormatan", "Kekuasaan", "Pekerjaan"],
+    c: 1
+  },
+  {
+    q: "Istilah campur baur antara laki-laki dan perempuan di suatu tempat tanpa adanya pemisah dan batasan syariat disebut...",
+    a: ["Khalwat", "Ikhtilat", "Ta'aruf", "Silaturahmi"],
+    c: 1
+  },
+  {
+    q: "Hukuman hudud untuk zina hanya dapat dilaksanakan oleh...",
+    a: ["Siapa saja yang melihat", "Pemerintah yang sah (Ulil Amri)", "Orang tua pelaku", "Ketua RT setempat"],
+    c: 1
+  },
+  {
+    q: "Anak yang lahir dari hasil di luar nikah (zina) secara hukum perdata Islam nasabnya disandarkan kepada...",
+    a: ["Ayah biologisnya", "Ibunya", "Negara", "Kakek dari pihak ayah"],
+    c: 1
+  },
+  {
+    q: "Ayat 'فَاجْلِدُوا كُلَّ وَاحِدٍ مِنْهُمَا مِائَةَ جَلْدَةٍ' dalam Q.S. An-Nur ayat 2 berarti perintah untuk...",
+    a: ["Menikahkan mereka berdua", "Mencambuk masing-masing 100 kali", "Mengusir mereka", "Memaafkan mereka"],
+    c: 1
+  },
+  {
+    q: "Kata 'وَلَا تَأْخُذْكُمْ بِهِمَا رَأْفَةٌ' dalam Q.S An-Nur ayat 2 artinya adalah...",
+    a: ["Janganlah kamu merasa takut", "Janganlah belas kasihan mencegahmu", "Janganlah kamu memukul terlalu keras", "Janganlah kamu menerima suap"],
+    c: 1
+  },
+  {
+    q: "Berikut ini adalah faktor-faktor yang sering menjerumuskan remaja ke dalam pergaulan bebas, kecuali...",
+    a: ["Kurangnya pengawasan orang tua", "Pemahaman agama yang kuat", "Pengaruh tontonan yang tidak mendidik", "Teman bergaul yang buruk"],
+    c: 1
+  },
+  {
+    q: "Perbuatan zina yang dilakukan akibat pemerkosaan (dipaksa) menyebabkan korban...",
+    a: ["Tetap dihukum cambuk", "Tidak dikenakan hukuman hadd (bebas)", "Dihukum setengahnya", "Dihukum ganda"],
+    c: 1
+  },
+  {
+    q: "Kata 'الدِّينِ' (Ad-diin) pada Q.S An-Nur ayat 2 mengandung hukum tajwid...",
+    a: ["Alif Lam Qamariyah", "Alif Lam Syamsiyah", "Idzhar Halqi", "Qalqalah"],
+    c: 1
+  },
+  {
+    q: "Apa syarat diterimanya taubat bagi pelaku zina?",
+    a: ["Membayar denda ke masjid", "Menyesal, berhenti, dan berjanji tidak mengulangi", "Menceritakan dosanya ke semua orang", "Berpuasa 40 hari berturut-turut"],
+    c: 1
+  },
+  {
+    q: "Mengapa dalam Islam hukum menutup aurat diwajibkan bagi muslim dan muslimah?",
+    a: ["Agar terlihat modern", "Sebagai bentuk ketaatan dan menjaga diri dari pelecehan", "Hanya tradisi Arab", "Untuk membedakan status sosial"],
+    c: 1
+  },
+  {
+    q: "Bagi laki-laki pezina, Allah mengharamkan ia menikah dengan wanita yang...",
+    a: ["Miskin", "Salehah/Mukminah yang menjaga diri", "Lebih tua", "Berbeda suku"],
+    c: 1
+  },
+  {
+    q: "Salah satu kerugian akibat pergaulan bebas dan zina di masa depan adalah...",
+    a: ["Mudah mendapat pekerjaan", "Hilangnya kepercayaan dari masyarakat dan keluarga", "Bertambahnya kekayaan", "Dihormati teman-teman"],
+    c: 1
+  },
+  {
+    q: "Jika seorang pelaku zina menarik kembali pengakuannya sebelum hukuman rajam/cambuk selesai dilaksanakan, maka...",
+    a: ["Hukuman tetap dilanjutkan", "Hukuman dihentikan/dibatalkan", "Hukuman diganti denda", "Keluarganya yang dihukum"],
+    c: 1
+  },
+  {
+    q: "Sebutan bagi orang-orang yang senantiasa menjaga kemaluannya (dari zina) dalam Al-Qur'an adalah tanda orang yang...",
+    a: ["Beruntung (Al-Muflihun)", "Sombong", "Merugi", "Biasa saja"],
+    c: 0
+  },
+  {
+    q: "Sikap berpakaian ketat sehingga menampakkan lekuk tubuh, meskipun sudah tertutup kain, sering diistilahkan sebagai...",
+    a: ["Berpakaian syar'i", "Berpakaian tapi telanjang", "Pakaian adat", "Pakaian ihram"],
+    c: 1
+  },
+  {
+    q: "Salah satu upaya dari dalam diri (internal) untuk membentengi diri dari perbuatan zina adalah...",
+    a: ["Mengurung diri di rumah", "Meningkatkan ibadah seperti shalat dan puasa", "Membawa senjata tajam", "Menjauhi semua teman"],
+    c: 1
+  },
+  {
+    q: "Kata 'الْيَوْمِ' (Al-Yaumi) dalam Q.S. An-Nur ayat 2 mengandung hukum bacaan...",
+    a: ["Alif Lam Syamsiyah", "Alif Lam Qamariyah", "Mad Jaiz", "Iqlab"],
+    c: 1
+  }
+];
   let currentIdx = 0;
   let score = 0;
 
@@ -278,5 +477,6 @@
 </script>
 </body>
 </html>
+
 
 
