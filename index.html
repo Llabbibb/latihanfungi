@@ -56,7 +56,7 @@
 
         .option-btn:disabled {
             cursor: not-allowed;
-            opacity: 0.7;
+            opacity: 0.8;
         }
 
         .correct { background-color: var(--success) !important; color: white !important; border-color: var(--success) !important; opacity: 1 !important; }
@@ -408,9 +408,8 @@
   let currentIdx = 0;
   let score = 0;
   let playerName = ""; 
-  let hasFailedCurrent = false;
 
-  // EVENT LISTENERS (Cara yang aman di dalam Module)
+  // EVENT LISTENERS
   document.getElementById('btn-start').addEventListener('click', () => {
       const input = document.getElementById('username').value.trim();
       if (!input) {
@@ -436,7 +435,6 @@
 
   // FUNGSI UTAMA KUIS
   function showQuestion() {
-      hasFailedCurrent = false; // Reset status salah
       const data = questions[currentIdx];
       const gameBox = document.getElementById('game-box');
       gameBox.className = "animate__animated animate__fadeInRight";
@@ -448,7 +446,7 @@
           `<button class="option-btn" data-index="${i}">${opt}</button>`
       ).join('');
       
-      // Pasang Event Listener untuk setiap pilihan jawaban
+      // Pasang Event Listener
       const optionButtons = document.querySelectorAll('.option-btn');
       optionButtons.forEach(btn => {
           btn.addEventListener('click', function() {
@@ -463,26 +461,23 @@
 
   function handleAnswer(idx, btn) {
       const correctIdx = questions[currentIdx].c;
+      const allBtns = document.querySelectorAll('.option-btn');
+      
+      // Matikan SEMUA tombol agar tidak bisa diganti/diklik ulang
+      allBtns.forEach(b => b.disabled = true);
 
       if(idx === correctIdx) {
-          // JIKA BENAR
+          // JIKA JAWABAN BENAR
           btn.classList.add('correct', 'animate__animated', 'animate__pulse');
-          
-          const allBtns = document.querySelectorAll('.option-btn');
-          allBtns.forEach(b => b.disabled = true);
-          
-          // Tambah skor jika di soal ini belum pernah salah (50 soal = 2 poin/soal)
-          if (!hasFailedCurrent) {
-              score += 2; 
-          }
-          
-          document.getElementById('btn-next').style.display = "block";
+          score += 2; // Tambah skor (50 soal x 2 = 100 point)
       } else {
-          // JIKA SALAH
+          // JIKA JAWABAN SALAH
           btn.classList.add('wrong', 'animate__animated', 'animate__shakeX');
-          btn.disabled = true; // Matikan hanya tombol yang salah
-          hasFailedCurrent = true; // Tandai sudah salah
+          // Tidak ada kode untuk menampilkan jawaban yang benar.
       }
+      
+      // Munculkan tombol Lanjut apapun hasil jawabannya
+      document.getElementById('btn-next').style.display = "block";
   }
 
   function showResult() {
