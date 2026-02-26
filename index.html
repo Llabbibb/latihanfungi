@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>💰 Kuis PAI Bab 6 💰</title>
+    <title>📚 Kuis PAI Bab 6 📚</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <style>
         :root {
@@ -104,7 +104,7 @@
         <h1 style="font-size: 2.5em; margin-bottom: 10px;">📚 Kuis PAI 📚</h1>
         <p style="text-align: center; color: #636e72; margin-bottom: 25px;">Bab 6: Menjauhi Pergaulan Bebas</p>
         <input type="text" id="username" placeholder="Ketik nama kamu di sini..." required>
-        <button class="main-btn animate__animated animate__pulse animate__infinite" onclick="startQuiz()">Mulai Kuis ➔</button>
+        <button id="btn-start" class="main-btn animate__animated animate__pulse animate__infinite">Mulai Kuis ➔</button>
     </div>
 
     <div id="quiz-ui" class="hidden">
@@ -113,14 +113,14 @@
             <div class="question" id="question">Memuat soal...</div>
             <div class="options" id="options"></div>
         </div>
-        <button id="next-btn" class="main-btn animate__animated animate__bounceIn" style="display:none;" onclick="nextQuestion()">Lanjut ➔</button>
+        <button id="btn-next" class="main-btn animate__animated animate__bounceIn" style="display:none;">Lanjut ➔</button>
     </div>
 
     <div id="result-ui" class="hidden animate__animated animate__zoomIn">
         <h1 style="font-size: 3em;">🎉</h1>
         <h2 style="text-align: center;">Skor Kamu: <span id="final-score">0</span></h2>
-        <button id="save-btn" class="main-btn" style="background: var(--success);" onclick="uploadScore()">Kirim ke Leaderboard Global</button>
-        <button class="main-btn" style="background: #636e72;" onclick="location.reload()">Main Lagi</button>
+        <button id="btn-save" class="main-btn" style="background: var(--success);">Kirim ke Leaderboard Global</button>
+        <button id="btn-reload" class="main-btn" style="background: #636e72;">Main Lagi</button>
     </div>
 
     <div class="stats-card">
@@ -205,4 +205,333 @@
   },
   {
     q: "Apabila seseorang menuduh orang lain berzina tetapi tidak mampu mendatangkan saksi yang cukup, maka penuduh akan dikenakan hukuman...",
-    a: ["Rajam", "Qazhaf (camb
+    a: ["Rajam", "Qazhaf (cambuk 80 kali)", "Denda", "Pengasingan"],
+    c: 1
+  },
+  {
+    q: "Dampak perbuatan zina sangat merusak tatanan sosial, salah satu yang paling krusial adalah merusak nasab. Apa yang dimaksud dengan nasab?",
+    a: ["Kekayaan keluarga", "Garis keturunan", "Kesehatan fisik", "Pendidikan anak"],
+    c: 1
+  },
+  {
+    q: "Istilah berduaan antara laki-laki dan perempuan yang bukan mahram di tempat sepi sehingga memicu fitnah dan syahwat disebut...",
+    a: ["Ikhtilat", "Khalwat", "Ghibah", "Tabarruj"],
+    c: 1
+  },
+  {
+    q: "Salah satu cara untuk menghindari zina adalah dengan 'Ghadhul Bashar', yang artinya...",
+    a: ["Menutup aurat", "Menundukkan/menjaga pandangan", "Menjaga lisan", "Menahan amarah"],
+    c: 1
+  },
+  {
+    q: "Perilaku mempertontonkan perhiasan, kecantikan, dan aurat kepada laki-laki yang bukan mahramnya secara berlebihan disebut...",
+    a: ["Tawadhu", "Tabarruj", "Qana'ah", "Tasamuh"],
+    c: 1
+  },
+  {
+    q: "Dalam hukum KUHP di Indonesia (Pasal 284), tindak pidana perzinaan dapat diancam dengan hukuman penjara paling lama...",
+    a: ["3 bulan", "9 bulan", "5 tahun", "Seumur hidup"],
+    c: 1
+  },
+  {
+    q: "Penyakit menular seksual yang paling berbahaya dan belum ada obat penyembuhnya secara total akibat pergaulan bebas adalah...",
+    a: ["Influenza", "HIV/AIDS", "Tifus", "Demam Berdarah"],
+    c: 1
+  },
+  {
+    q: "Sebuah hadis menyebutkan bahwa apabila ada laki-laki dan perempuan berduaan (khalwat), maka yang ketiga di antara mereka adalah...",
+    a: ["Malaikat", "Setan", "Teman", "Hati nurani"],
+    c: 1
+  },
+  {
+    q: "Apa arti 'Wa saa'a sabiilaa' di akhir ayat 32 surah Al-Isra'?",
+    a: ["Dan itu adalah dosa besar", "Dan itu seburuk-buruk jalan", "Dan Allah Maha Melihat", "Maka jauhilah olehmu"],
+    c: 1
+  },
+  {
+    q: "Berdasarkan Q.S. An-Nur ayat 2, perasaan apa yang tidak boleh menghalangi penegakan hukum bagi pezina?",
+    a: ["Amarah", "Belas kasihan (Iba)", "Takut", "Dendam"],
+    c: 1
+  },
+  {
+    q: "Kata 'الزَّانِيَةُ' (Az-zaaniyatu) diawali dengan Alif Lam yang bertemu huruf Zai. Bagaimana cara membacanya?",
+    a: ["Al-zaaniyatu", "Az-zaaniyatu", "A-zaaniyatu", "Ar-zaaniyatu"],
+    c: 1
+  },
+  {
+    q: "Hukuman pengasingan bagi pezina ghairu muhsan menurut sebagian ulama dilakukan selama...",
+    a: ["Satu bulan", "Satu tahun", "Seumur hidup", "Lima tahun"],
+    c: 1
+  },
+  {
+    q: "Menurut Imam Malik dan Syafi'i, berapa kali seseorang harus mengaku berzina agar bisa dijatuhi hukuman (jika tidak ada saksi)?",
+    a: ["1 kali", "2 kali", "3 kali", "4 kali"],
+    c: 0
+  },
+  {
+    q: "Apa syarat saksi dalam kasus perzinaan agar kesaksiannya diterima syariat?",
+    a: ["Boleh laki-laki atau perempuan", "Laki-laki, muslim, baligh, berakal, adil, melihat langsung", "Mendengar cerita dari orang lain", "Anak kecil yang jujur"],
+    c: 1
+  },
+  {
+    q: "Jika para saksi tidak genap berjumlah 4 orang, apa yang terjadi pada saksi yang sudah melapor?",
+    a: ["Kesaksiannya disimpan", "Mereka justru dihukum cambuk 80 kali (Qazhaf)", "Pelaku tetap dihukum", "Diberi hadiah"],
+    c: 1
+  },
+  {
+    q: "Zina yang dilakukan dengan mata adalah...",
+    a: ["Menyentuh", "Melihat hal-hal yang diharamkan", "Mendengarkan gosip", "Berkata kotor"],
+    c: 1
+  },
+  {
+    q: "Selain menjaga pandangan, cara lain yang diwajibkan agama untuk mencegah pergaulan bebas bagi muslimah adalah...",
+    a: ["Menutup diri di kamar selamanya", "Menutup aurat dengan jilbab yang syar'i", "Memakai pakaian mahal", "Tidak berbicara sama sekali"],
+    c: 1
+  },
+  {
+    q: "Secara bahasa (etimologi), zina berarti...",
+    a: ["Kebaikan", "Hubungan terlarang", "Perpisahan", "Pernikahan"],
+    c: 1
+  },
+  {
+    q: "Dalam ayat 'وَلَا تَقْرَبُوا الزِّنَا', terdapat mad thabi'i pada huruf 'Laa' karena...",
+    a: ["Fathah bertemu wau", "Fathah bertemu alif", "Kasrah bertemu ya", "Dhammah bertemu wau"],
+    c: 1
+  },
+  {
+    q: "Kata 'تَقْرَبُوا' (Taqrabuu) mengandung mad thabi'i karena...",
+    a: ["Fathah bertemu alif", "Dhammah bertemu wau sukun", "Kasrah bertemu ya sukun", "Fathah bertemu ya"],
+    c: 1
+  },
+  {
+    q: "Berapa panjang harakat untuk bacaan Mad Thabi'i?",
+    a: ["1 harakat", "2 harakat", "4 harakat", "6 harakat"],
+    c: 1
+  },
+  {
+    q: "Perbuatan zina dapat menghilangkan cahaya keimanan dari hati pelakunya. Hal ini merupakan dampak zina di bidang...",
+    a: ["Kesehatan", "Spiritual (Agama)", "Ekonomi", "Sosial"],
+    c: 1
+  },
+  {
+    q: "Menghindari pergaulan bebas mencerminkan upaya melindungi 'Harkat dan Martabat Manusia'. Martabat artinya...",
+    a: ["Kekayaan", "Harga diri dan kehormatan", "Kekuasaan", "Pekerjaan"],
+    c: 1
+  },
+  {
+    q: "Istilah campur baur antara laki-laki dan perempuan di suatu tempat tanpa adanya pemisah dan batasan syariat disebut...",
+    a: ["Khalwat", "Ikhtilat", "Ta'aruf", "Silaturahmi"],
+    c: 1
+  },
+  {
+    q: "Hukuman hudud untuk zina hanya dapat dilaksanakan oleh...",
+    a: ["Siapa saja yang melihat", "Pemerintah yang sah (Ulil Amri)", "Orang tua pelaku", "Ketua RT setempat"],
+    c: 1
+  },
+  {
+    q: "Anak yang lahir dari hasil di luar nikah (zina) secara hukum perdata Islam nasabnya disandarkan kepada...",
+    a: ["Ayah biologisnya", "Ibunya", "Negara", "Kakek dari pihak ayah"],
+    c: 1
+  },
+  {
+    q: "Ayat 'فَاجْلِدُوا كُلَّ وَاحِدٍ مِنْهُمَا مِائَةَ جَلْدَةٍ' dalam Q.S. An-Nur ayat 2 berarti perintah untuk...",
+    a: ["Menikahkan mereka berdua", "Mencambuk masing-masing 100 kali", "Mengusir mereka", "Memaafkan mereka"],
+    c: 1
+  },
+  {
+    q: "Kata 'وَلَا تَأْخُذْكُمْ بِهِمَا رَأْفَةٌ' dalam Q.S An-Nur ayat 2 artinya adalah...",
+    a: ["Janganlah kamu merasa takut", "Janganlah belas kasihan mencegahmu", "Janganlah kamu memukul terlalu keras", "Janganlah kamu menerima suap"],
+    c: 1
+  },
+  {
+    q: "Berikut ini adalah faktor-faktor yang sering menjerumuskan remaja ke dalam pergaulan bebas, kecuali...",
+    a: ["Kurangnya pengawasan orang tua", "Pemahaman agama yang kuat", "Pengaruh tontonan yang tidak mendidik", "Teman bergaul yang buruk"],
+    c: 1
+  },
+  {
+    q: "Perbuatan zina yang dilakukan akibat pemerkosaan (dipaksa) menyebabkan korban...",
+    a: ["Tetap dihukum cambuk", "Tidak dikenakan hukuman hadd (bebas)", "Dihukum setengahnya", "Dihukum ganda"],
+    c: 1
+  },
+  {
+    q: "Kata 'الدِّينِ' (Ad-diin) pada Q.S An-Nur ayat 2 mengandung hukum tajwid...",
+    a: ["Alif Lam Qamariyah", "Alif Lam Syamsiyah", "Idzhar Halqi", "Qalqalah"],
+    c: 1
+  },
+  {
+    q: "Apa syarat diterimanya taubat bagi pelaku zina?",
+    a: ["Membayar denda ke masjid", "Menyesal, berhenti, dan berjanji tidak mengulangi", "Menceritakan dosanya ke semua orang", "Berpuasa 40 hari berturut-turut"],
+    c: 1
+  },
+  {
+    q: "Mengapa dalam Islam hukum menutup aurat diwajibkan bagi muslim dan muslimah?",
+    a: ["Agar terlihat modern", "Sebagai bentuk ketaatan dan menjaga diri dari pelecehan", "Hanya tradisi Arab", "Untuk membedakan status sosial"],
+    c: 1
+  },
+  {
+    q: "Bagi laki-laki pezina, Allah mengharamkan ia menikah dengan wanita yang...",
+    a: ["Miskin", "Salehah/Mukminah yang menjaga diri", "Lebih tua", "Berbeda suku"],
+    c: 1
+  },
+  {
+    q: "Salah satu kerugian akibat pergaulan bebas dan zina di masa depan adalah...",
+    a: ["Mudah mendapat pekerjaan", "Hilangnya kepercayaan dari masyarakat dan keluarga", "Bertambahnya kekayaan", "Dihormati teman-teman"],
+    c: 1
+  },
+  {
+    q: "Jika seorang pelaku zina menarik kembali pengakuannya sebelum hukuman rajam/cambuk selesai dilaksanakan, maka...",
+    a: ["Hukuman tetap dilanjutkan", "Hukuman dihentikan/dibatalkan", "Hukuman diganti denda", "Keluarganya yang dihukum"],
+    c: 1
+  },
+  {
+    q: "Sebutan bagi orang-orang yang senantiasa menjaga kemaluannya (dari zina) dalam Al-Qur'an adalah tanda orang yang...",
+    a: ["Beruntung (Al-Muflihun)", "Sombong", "Merugi", "Biasa saja"],
+    c: 0
+  },
+  {
+    q: "Sikap berpakaian ketat sehingga menampakkan lekuk tubuh, meskipun sudah tertutup kain, sering diistilahkan sebagai...",
+    a: ["Berpakaian syar'i", "Berpakaian tapi telanjang", "Pakaian adat", "Pakaian ihram"],
+    c: 1
+  },
+  {
+    q: "Salah satu upaya dari dalam diri (internal) untuk membentengi diri dari perbuatan zina adalah...",
+    a: ["Mengurung diri di rumah", "Meningkatkan ibadah seperti shalat dan puasa", "Membawa senjata tajam", "Menjauhi semua teman"],
+    c: 1
+  },
+  {
+    q: "Kata 'الْيَوْمِ' (Al-Yaumi) dalam Q.S. An-Nur ayat 2 mengandung hukum bacaan...",
+    a: ["Alif Lam Syamsiyah", "Alif Lam Qamariyah", "Mad Jaiz", "Iqlab"],
+    c: 1
+  }
+];
+  
+  let currentIdx = 0;
+  let score = 0;
+  let playerName = ""; 
+  let hasFailedCurrent = false;
+
+  // EVENT LISTENERS (Cara yang aman di dalam Module)
+  document.getElementById('btn-start').addEventListener('click', () => {
+      const input = document.getElementById('username').value.trim();
+      if (!input) {
+          alert("Tulis nama kamu dulu ya!");
+          return;
+      }
+      playerName = input; 
+      document.getElementById('start-ui').classList.add('hidden'); 
+      document.getElementById('quiz-ui').classList.remove('hidden'); 
+      showQuestion(); 
+  });
+
+  document.getElementById('btn-next').addEventListener('click', () => {
+      currentIdx++;
+      if(currentIdx < questions.length) {
+          showQuestion();
+      } else {
+          showResult();
+      }
+  });
+
+  document.getElementById('btn-reload').addEventListener('click', () => location.reload());
+
+  // FUNGSI UTAMA KUIS
+  function showQuestion() {
+      hasFailedCurrent = false; // Reset status salah
+      const data = questions[currentIdx];
+      const gameBox = document.getElementById('game-box');
+      gameBox.className = "animate__animated animate__fadeInRight";
+      
+      document.getElementById('question').innerText = data.q;
+      
+      // Render Pilihan Jawaban
+      document.getElementById('options').innerHTML = data.a.map((opt, i) => 
+          `<button class="option-btn" data-index="${i}">${opt}</button>`
+      ).join('');
+      
+      // Pasang Event Listener untuk setiap pilihan jawaban
+      const optionButtons = document.querySelectorAll('.option-btn');
+      optionButtons.forEach(btn => {
+          btn.addEventListener('click', function() {
+              handleAnswer(parseInt(this.getAttribute('data-index')), this);
+          });
+      });
+      
+      document.getElementById('progress-bar').style.width = `${(currentIdx / questions.length) * 100}%`;
+      document.getElementById('btn-next').style.display = "none";
+      setTimeout(() => { gameBox.className = ""; }, 500);
+  }
+
+  function handleAnswer(idx, btn) {
+      const correctIdx = questions[currentIdx].c;
+
+      if(idx === correctIdx) {
+          // JIKA BENAR
+          btn.classList.add('correct', 'animate__animated', 'animate__pulse');
+          
+          const allBtns = document.querySelectorAll('.option-btn');
+          allBtns.forEach(b => b.disabled = true);
+          
+          // Tambah skor jika di soal ini belum pernah salah (50 soal = 2 poin/soal)
+          if (!hasFailedCurrent) {
+              score += 2; 
+          }
+          
+          document.getElementById('btn-next').style.display = "block";
+      } else {
+          // JIKA SALAH
+          btn.classList.add('wrong', 'animate__animated', 'animate__shakeX');
+          btn.disabled = true; // Matikan hanya tombol yang salah
+          hasFailedCurrent = true; // Tandai sudah salah
+      }
+  }
+
+  function showResult() {
+      document.getElementById('quiz-ui').classList.add('hidden');
+      document.getElementById('result-ui').classList.remove('hidden');
+      document.getElementById('final-score').innerText = score;
+      document.getElementById('progress-bar').style.width = "100%";
+  }
+
+  // FUNGSI FIREBASE
+  document.getElementById('btn-save').addEventListener('click', async () => {
+      const saveBtn = document.getElementById('btn-save');
+      saveBtn.innerText = "Mengirim...";
+      saveBtn.disabled = true;
+
+      try {
+          const scoresRef = ref(db, 'leaderboard');
+          await push(scoresRef, {
+              username: playerName, 
+              score: score,
+              timestamp: Date.now()
+          });
+          alert("✅ Skor berhasil dikirim!");
+          saveBtn.innerText = "Tersimpan!";
+      } catch (e) {
+          alert("Gagal: " + e.message);
+          saveBtn.disabled = false;
+          saveBtn.innerText = "Coba Lagi";
+      }
+  });
+
+  // Monitor Leaderboard
+  const lbRef = query(ref(db, 'leaderboard'), orderByChild('score'), limitToLast(10));
+  onValue(lbRef, (snapshot) => {
+      const data = snapshot.val();
+      const lbBody = document.getElementById('lb-body');
+      document.getElementById('loading-lb').classList.add('hidden');
+      if(!data) return;
+
+      let items = Object.values(data).sort((a, b) => b.score - a.score);
+      lbBody.innerHTML = items.map((item, index) => `
+          <tr>
+              <td>#${index + 1}</td>
+              <td>${item.username}</td>
+              <td>${item.score}</td>
+          </tr>
+      `).join('');
+  });
+
+</script>
+</body>
+</html>
