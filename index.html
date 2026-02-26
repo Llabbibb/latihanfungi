@@ -94,6 +94,10 @@
 
         .hidden { display: none !important; }
         .loader { text-align: center; color: var(--primary); font-style: italic; font-size: 0.8em; }
+        
+        #save-status {
+            text-align: center; font-weight: 600; margin-top: 15px; font-size: 0.9em;
+        }
     </style>
 </head>
 <body>
@@ -119,8 +123,10 @@
     <div id="result-ui" class="hidden animate__animated animate__zoomIn">
         <h1 style="font-size: 3em;">🎉</h1>
         <h2 style="text-align: center;">Skor Kamu: <span id="final-score">0</span></h2>
-        <button id="btn-save" class="main-btn" style="background: var(--success);">Kirim ke Leaderboard Global</button>
-        <button id="btn-reload" class="main-btn" style="background: #636e72;">Main Lagi</button>
+        
+        <p id="save-status">Menyiapkan data...</p>
+
+        <button id="btn-reload" class="main-btn" style="background: var(--primary); margin-top: 10px;">Main Lagi</button>
     </div>
 
     <div class="stats-card">
@@ -463,20 +469,15 @@
       const correctIdx = questions[currentIdx].c;
       const allBtns = document.querySelectorAll('.option-btn');
       
-      // Matikan SEMUA tombol agar tidak bisa diganti/diklik ulang
       allBtns.forEach(b => b.disabled = true);
 
       if(idx === correctIdx) {
-          // JIKA JAWABAN BENAR
           btn.classList.add('correct', 'animate__animated', 'animate__pulse');
-          score += 2; // Tambah skor (50 soal x 2 = 100 point)
+          score += 2; // Tambah skor 
       } else {
-          // JIKA JAWABAN SALAH
           btn.classList.add('wrong', 'animate__animated', 'animate__shakeX');
-          // Tidak ada kode untuk menampilkan jawaban yang benar.
       }
       
-      // Munculkan tombol Lanjut apapun hasil jawabannya
       document.getElementById('btn-next').style.display = "block";
   }
 
@@ -485,13 +486,16 @@
       document.getElementById('result-ui').classList.remove('hidden');
       document.getElementById('final-score').innerText = score;
       document.getElementById('progress-bar').style.width = "100%";
+
+      // Panggil fungsi upload otomatis begitu hasil muncul
+      autoUploadScore();
   }
 
-  // FUNGSI FIREBASE
-  document.getElementById('btn-save').addEventListener('click', async () => {
-      const saveBtn = document.getElementById('btn-save');
-      saveBtn.innerText = "Mengirim...";
-      saveBtn.disabled = true;
+  // FUNGSI FIREBASE (Otomatis)
+  async function autoUploadScore() {
+      const statusText = document.getElementById('save-status');
+      statusText.innerText = "⏳ Sedang menyimpan skor otomatis...";
+      statusText.style.color = "#d63031";
 
       try {
           const scoresRef = ref(db, 'leaderboard');
@@ -500,14 +504,12 @@
               score: score,
               timestamp: Date.now()
           });
-          alert("✅ Skor berhasil dikirim!");
-          saveBtn.innerText = "Tersimpan!";
+          statusText.innerText = "✅ Skor otomatis berhasil masuk ke Leaderboard!";
+          statusText.style.color = "#00b894";
       } catch (e) {
-          alert("Gagal: " + e.message);
-          saveBtn.disabled = false;
-          saveBtn.innerText = "Coba Lagi";
+          statusText.innerText = "❌ Gagal menyimpan: " + e.message;
       }
-  });
+  }
 
   // Monitor Leaderboard
   const lbRef = query(ref(db, 'leaderboard'), orderByChild('score'), limitToLast(10));
